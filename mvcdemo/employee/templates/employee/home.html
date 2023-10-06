@@ -1,0 +1,47 @@
+{% extends 'employee/base.html' %}
+
+{% block content %}
+<h1 class="text-center my-3">Employee Management</h1>
+<h3 class="text-center my-3">List Of Employees</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#SNO.</th>
+                                <th>NAME</th>
+                                <th>ID</th>
+                                <th>PHONE</th>
+                                <th>WORKING</th>
+                                <th>DEPARTMENT</th>
+                                <th>ADDRESS</th>
+                                <th>ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for e in emps %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{e.name}}</td>
+                                <td>{{e.emp_id}}</td>
+                                <td>{{e.phone}}</td>
+                                <td>{{e.working}}</td>
+                                <td>{{e.dept}}</td>
+                                <td>{{e.address}}</td>
+                                <td>
+                                    <a href="/delete/{{e.id}}" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="/update/{{e.id}}" class="btn btn-dark btn-sm">Edit</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
